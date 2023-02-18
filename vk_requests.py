@@ -14,13 +14,7 @@ body_error = []
 
 
 def error_msg(user_id, error):
-    """
-    если API в ответе возвращает ошибку, то пользователю в чат отправляется сообщение, так же оно дублируется в
-    консоль, работа программы прерывается
-    :param user_id: id пользователя которому отправится сообщение
-    :param error: код и текст ошибки
-    :return: сообщение в консоль
-    """
+
     message = (f'Ошибка!\nКод ошибки: {error[0][1]}\nТекст ошибки: {error[0][2]}')
     vk.method('messages.send', {'user_id': user_id, 'message': message, 'random_id': randrange(10 ** 7)})
     print(f'Ошибка VK API!\nКод ошибки: {error[0][1]}\nТекст ошибки: {error[0][2]}\nФункция: {error[0][3]}')
@@ -28,11 +22,7 @@ def error_msg(user_id, error):
 
 
 def get_user_info(user_id):
-    """
-    функция получает информацию о пользователе из его профиля VK
-    :param user_id: id пользователя в VK
-    :return:
-    """
+
     all_info = vk.method('users.get', {'user_id': user_id, 'fields': 'bdate,sex,city,relation'})
     try:
         all_info = all_info[0]
@@ -54,12 +44,7 @@ def get_user_info(user_id):
 
 
 def get_user_search(params_dict, vk_id_error):
-    '''
-    по введенным параметрам осуществляет поиск человека противоположного пола
-    :param params_dict:
-    :param vk_id_error:  id пользователя которуму бот отправит сообщение об ощибке
-    :return:
-    '''
+
     result_list = []
     params_for_search = {'access_token': TOKEN_USER, 'v': '5.131', 'sex': params_dict['sex'],
                          'city': str(params_dict['city_id']),
