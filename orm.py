@@ -1,6 +1,6 @@
 from sqlalchemy.orm import sessionmaker
 from models import *
-from params import BD_CONNECT
+from config import BD_CONNECT
 
 
 class ORM:
