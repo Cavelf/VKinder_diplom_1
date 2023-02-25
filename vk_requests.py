@@ -4,7 +4,7 @@ from random import randrange
 import requests
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
-from params import TOKEN_GROUP, TOKEN_USER, NUMBER_OF_RESULT
+from config import TOKEN_GROUP, TOKEN_USER, NUMBER_OF_RESULT
 import datetime
 import time
 
